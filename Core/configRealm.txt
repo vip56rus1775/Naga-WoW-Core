@@ -1,0 +1,3 @@
+true
+X:\World_of_Warcraft_Server\Core\authserver.exe
+X:\World_of_Warcraft_Server\Core\worldserver.exe
