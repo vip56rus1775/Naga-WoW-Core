@@ -1,0 +1,101 @@
+From 695d7576de7615a26494df06da254be33370e715 Mon Sep 17 00:00:00 2001
+From: Shiro <alu@senzaii.net>
+Date: Thu, 20 Oct 2011 17:28:09 +0200
+Subject: [PATCH 43/61] [IcecrownCitadel/ValithriaDreamwalker] Fix chest loot
+
+---
+ .../2011-10-20-01.world_gameobject_template.sql    |    4 ++++
+ .../RC2/world/2011-10-20-02.world_gameobject.sql   |    5 +++++
+ .../IcecrownCitadel/boss_valithria_dreamwalker.cpp |    4 ++--
+ .../Northrend/IcecrownCitadel/icecrown_citadel.h   |    4 ++++
+ .../IcecrownCitadel/instance_icecrown_citadel.cpp  |   13 +++++++++++++
+ 5 files changed, 28 insertions(+), 2 deletions(-)
+ create mode 100644 sql/ALive/RC2/world/2011-10-20-01.world_gameobject_template.sql
+ create mode 100644 sql/ALive/RC2/world/2011-10-20-02.world_gameobject.sql
+
+diff --git a/sql/ALive/RC2/world/2011-10-20-01.world_gameobject_template.sql b/sql/ALive/RC2/world/2011-10-20-01.world_gameobject_template.sql
+new file mode 100644
+index 0000000..1ad2fc2
+--- /dev/null
++++ b/sql/ALive/RC2/world/2011-10-20-01.world_gameobject_template.sql
+@@ -0,0 +1,4 @@
++UPDATE `gameobject_template` SET `data10` = '1', `data12` = '1', `data13` = '1' WHERE `entry` = '201959';
++UPDATE `gameobject_template` SET `data10` = '1', `data12` = '1', `data13` = '1' WHERE `entry` = '202338';
++UPDATE `gameobject_template` SET `data10` = '1', `data12` = '1', `data13` = '1' WHERE `entry` = '202339';
++UPDATE `gameobject_template` SET `data10` = '1', `data12` = '1', `data13` = '1' WHERE `entry` = '202340';
+\ No newline at end of file
+diff --git a/sql/ALive/RC2/world/2011-10-20-02.world_gameobject.sql b/sql/ALive/RC2/world/2011-10-20-02.world_gameobject.sql
+new file mode 100644
+index 0000000..522192e
+--- /dev/null
++++ b/sql/ALive/RC2/world/2011-10-20-02.world_gameobject.sql
+@@ -0,0 +1,5 @@
++INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`) VALUES
++('', '201959', '631', '1', '1', '4203.700195', '2484.830078', '364.955994', '3.141590', '', '', '', '', '-120', '', '1'),
++('', '202338', '631', '4', '1', '4203,700195', '2484,830078', '364,955994', '3,141590', '', '', '', '', '-120', '', '1'),
++('', '202339', '631', '2', '1', '4203,700195', '2484,830078', '364,955994', '3,141590', '', '', '', '', '-120', '', '1'),
++('', '202340', '631', '8', '1', '4203,700195', '2484,830078', '364,955994', '3,141590', '', '', '', '', '-120', '', '1');
+\ No newline at end of file
+diff --git a/src/server/scripts/Northrend/IcecrownCitadel/icecrown_citadel.h b/src/server/scripts/Northrend/IcecrownCitadel/icecrown_citadel.h
+index 6290445..faa51a0 100644
+--- a/src/server/scripts/Northrend/IcecrownCitadel/icecrown_citadel.h
++++ b/src/server/scripts/Northrend/IcecrownCitadel/icecrown_citadel.h
+@@ -333,6 +333,10 @@ enum GameObjectsIds
+     GO_DOODAD_ICECROWN_ROOSTPORTCULLIS_02   = 201381,
+     GO_DOODAD_ICECROWN_ROOSTPORTCULLIS_03   = 201382,
+     GO_DOODAD_ICECROWN_ROOSTPORTCULLIS_04   = 201383,
++	GO_VALITHRIA_CACHE_10N					= 201959,
++	GO_VALITHRIA_CACHE_25N					= 202338,
++	GO_VALITHRIA_CACHE_10H					= 202339,
++	GO_VALITHRIA_CACHE_25H					= 202340,
+ 
+     // Sindragosa
+     GO_SINDRAGOSA_ENTRANCE_DOOR             = 201373,
+diff --git a/src/server/scripts/Northrend/IcecrownCitadel/instance_icecrown_citadel.cpp b/src/server/scripts/Northrend/IcecrownCitadel/instance_icecrown_citadel.cpp
+index 90078e4..0e3c1df 100644
+--- a/src/server/scripts/Northrend/IcecrownCitadel/instance_icecrown_citadel.cpp
++++ b/src/server/scripts/Northrend/IcecrownCitadel/instance_icecrown_citadel.cpp
+@@ -126,6 +126,7 @@ class instance_icecrown_citadel : public InstanceMapScript
+                 ValithriaDreamwalkerGUID = 0;
+                 ValithriaLichKingGUID = 0;
+                 ValithriaTriggerGUID = 0;
++				ValithriaCacheGUID =0;
+                 SindragosaGUID = 0;
+                 SpinestalkerGUID = 0;
+                 RimefangGUID = 0;
+@@ -451,6 +452,12 @@ class instance_icecrown_citadel : public InstanceMapScript
+                     case GO_DRINK_ME:
+                         PutricideTableGUID = go->GetGUID();
+                         break;
++					case GO_VALITHRIA_CACHE_10N:
++					case GO_VALITHRIA_CACHE_25N:
++					case GO_VALITHRIA_CACHE_10H:
++					case GO_VALITHRIA_CACHE_25H:
++						ValithriaCacheGUID = go->GetGUID();
++						break;
+                     case GO_ARTHAS_PLATFORM:
+                         // this enables movement at The Frozen Throne, when printed this value is 0.000000f
+                         // however, when represented as integer client will accept only this value
+@@ -710,6 +717,11 @@ class instance_icecrown_citadel : public InstanceMapScript
+                         }
+                         break;
+                     case DATA_VALITHRIA_DREAMWALKER:
++						if (state == DONE)
++						{
++							if(ValithriaCacheGUID)
++								DoRespawnGameObject(ValithriaCacheGUID, 7*DAY);
++						}
+                         if (state == DONE && sPoolMgr->IsSpawnedObject<Quest>(WeeklyQuestData[8].questId[instance->GetSpawnMode() & 1]))
+                             instance->SummonCreature(NPC_VALITHRIA_DREAMWALKER_QUEST, ValithriaSpawnPos);
+                         break;
+@@ -1258,6 +1270,7 @@ class instance_icecrown_citadel : public InstanceMapScript
+             uint64 ValithriaDreamwalkerGUID;
+             uint64 ValithriaLichKingGUID;
+             uint64 ValithriaTriggerGUID;
++			uint64 ValithriaCacheGUID;
+             uint64 SindragosaGUID;
+             uint64 SpinestalkerGUID;
+             uint64 RimefangGUID;
+-- 
+1.7.8.msysgit.0
+
