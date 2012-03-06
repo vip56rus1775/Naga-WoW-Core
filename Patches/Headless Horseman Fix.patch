@@ -1,0 +1,26 @@
+From 882b0e267f43cba19cc0cd9faa4256589f22f2f1 Mon Sep 17 00:00:00 2001
+From: terabyte101 <flowershendrik@ymail.com>
+Date: Fri, 24 Feb 2012 09:48:49 -0800
+Subject: [PATCH] Update
+ src/server/scripts/EasternKingdoms/ScarletMonastery/boss_headless_horseman.cpp
+
+---
+ .../ScarletMonastery/boss_headless_horseman.cpp    |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/src/server/scripts/EasternKingdoms/ScarletMonastery/boss_headless_horseman.cpp b/src/server/scripts/EasternKingdoms/ScarletMonastery/boss_headless_horseman.cpp
+index 77099f2..e2749c6 100644
+--- a/src/server/scripts/EasternKingdoms/ScarletMonastery/boss_headless_horseman.cpp
++++ b/src/server/scripts/EasternKingdoms/ScarletMonastery/boss_headless_horseman.cpp
+@@ -412,6 +412,8 @@ public:
+             returned = true;
+             burned = false;
+             IsFlying = false;
++            me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_PC);
++
+             DoCast(me, SPELL_HEAD);
+             if (headGUID)
+             {
+-- 
+1.7.8.msysgit.0
+
