@@ -18,6 +18,7 @@
 #include "ScriptLoader.h"
 
 //examples
+void AddSC_vipcommands();
 void AddSC_example_creature();
 void AddSC_example_escort();
 void AddSC_example_gossip_codebox();
@@ -637,6 +638,7 @@ void AddScripts()
 
 void AddExampleScripts()
 {
+    AddSC_vipcommands();
     AddSC_example_creature();
     AddSC_example_escort();
     AddSC_example_gossip_codebox();
