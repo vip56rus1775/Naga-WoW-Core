@@ -171,6 +171,7 @@ enum AccountTypes
 	SEC_CoOwner                    = 11,   // CO-OWNER !
 	SEC_Owner                      = 12,    // OWNER !
 	SEC_CONSOLE                    = 13
+
 };
 
 enum LocaleConstant
