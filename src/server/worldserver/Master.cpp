@@ -123,7 +123,7 @@ int Master::Run()
     BigNumber seed1;
     seed1.SetRand(16 * 8);
 
-    sLog->outString("%s (worldserver-daemon)", _FULLVERSION);
+    sLog->outString("Continuity Core rev. 2012-04-3(worldserver-daemon)", _FULLVERSION);
     sLog->outString("<Ctrl-C> to stop.\n");
 
     sLog->outString(" _____   _____   __   _   _____   _   __   _   _   _   _   _____  __    __       _____       ___       ___  ___   _   __   _   _____  ");
@@ -274,7 +274,7 @@ int Master::Run()
     // set server online (allow connecting now)
     LoginDatabase.DirectPExecute("UPDATE realmlist SET color = color & ~%u, population = 0 WHERE id = '%u'", REALM_FLAG_INVALID, realmID);
 
-    sLog->outString("%s (worldserver-daemon) ready...", _FULLVERSION);
+    sLog->outString("Continuity Core rev. 2012-04-3 (worldserver-daemon) ready...", _FULLVERSION);
     sWorldSocketMgr->Wait();
 
     if (soap_thread)
