@@ -99,7 +99,7 @@ extern int main(int argc, char **argv)
     }
     sLog->Initialize();
 
-    sLog->outString("%s (authserver)", _FULLVERSION);
+    sLog->outString("Continuity Core rev. 2012-04-3 (authserver)", _FULLVERSION);
     sLog->outString("<Ctrl-C> to stop.\n");
     sLog->outString("Using configuration file %s.", cfg_file);
 
