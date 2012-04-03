@@ -126,15 +126,14 @@ int Master::Run()
     sLog->outString("%s (worldserver-daemon)", _FULLVERSION);
     sLog->outString("<Ctrl-C> to stop.\n");
 
-    sLog->outString(" ______                       __");
-    sLog->outString("/\\__  _\\       __          __/\\ \\__");
-    sLog->outString("\\/_/\\ \\/ _ __ /\\_\\    ___ /\\_\\ \\, _\\  __  __");
-    sLog->outString("   \\ \\ \\/\\`'__\\/\\ \\ /' _ `\\/\\ \\ \\ \\/ /\\ \\/\\ \\");
-    sLog->outString("    \\ \\ \\ \\ \\/ \\ \\ \\/\\ \\/\\ \\ \\ \\ \\ \\_\\ \\ \\_\\ \\");
-    sLog->outString("     \\ \\_\\ \\_\\  \\ \\_\\ \\_\\ \\_\\ \\_\\ \\__\\\\/`____ \\");
-    sLog->outString("      \\/_/\\/_/   \\/_/\\/_/\\/_/\\/_/\\/__/ `/___/> \\");
-    sLog->outString("                                 C O R E  /\\___/");
-    sLog->outString("http://TrinityCore.org                    \\/__/\n");
+    sLog->outString(" _____   _____   __   _   _____   _   __   _   _   _   _   _____  __    __       _____       ___       ___  ___   _   __   _   _____  ");
+    sLog->outString("/  ___| /  _  \ |  \ | | |_   _| | | |  \ | | | | | | | | |_   _| \ \  / /      /  ___|     /   |     /   |/   | | | |  \ | | /  ___| ");
+    sLog->outString("| |     | | | | |   \| |   | |   | | |   \| | | | | | | |   | |    \ \/ /       | |        / /| |    / /|   /| | | | |   \| | | |     ");
+    sLog->outString("| |     | | | | | |\   |   | |   | | | |\   | | | | | | |   | |     \  /        | |  _    / / | |   / / |__/ | | | | | |\   | | |  _  ");
+    sLog->outString("| |___  | |_| | | | \  |   | |   | | | | \  | | |_| | | |   | |     / /         | |_| |  / /  | |  / /       | | | | | | \  | | |_| | ");
+    sLog->outString("\_____| \_____/ |_|  \_|   |_|   |_| |_|  \_| \_____/ |_|   |_|    /_/          \_____/ /_/   |_| /_/        |_| |_| |_|  \_| \_____/ ");
+	    sLog->outString("Continuity Core");
+    sLog->outString("http://www.worldofwarcraft.co.za					\n");
 
 #ifdef USE_SFMT_FOR_RNG
     sLog->outString("\n");
